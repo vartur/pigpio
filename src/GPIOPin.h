@@ -68,11 +68,17 @@ namespace PiGPIO
 			
 			PinExportState m_state; ///< The export state of the pin.
 			
-			PinDirection m_direction; ///< The direction of the pin.
+			PinDirection m_direction; ///< The direction of the pin.		
 			
-			PinValue m_value; ///< The current value of the pin.		
 			
-			void writeToFile(const std::string& path, const auto& value) const;
+			///\brief Writes a value to a file.
+			///\param path The file's path.
+			///\param value The value to write.
+			static void writeToFile(const std::string& path, const auto& value);
+			
+			///\brief Reads the content of a file.
+			///\param path The file's path.
+			static std::string readFromFile(const std::string& path);
 			
 	};
 }

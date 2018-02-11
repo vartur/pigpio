@@ -11,6 +11,19 @@
 int main(int argc, const char* argv[])
 {
 	using namespace std;
-	cout<<"This is a test"<<endl;
+	using namespace PiGPIO;
+	
+	GPIOPin test(14);
+	test.setExportState(Exported);
+	
+	test.setDirection(Output);
+	
+	cout<< "Pin 14 value: " << (test.getValue() == High ? "1" : "0") <<endl;
+	cout << "Setting value to 1 on pin 14..." <<endl;
+	test.setValue(High);
+	cout<< "Pin 14 value: " << (test.getValue() == High ? "1" : "0") <<endl;
+	
+	
+	test.setExportState(Unexported);
 	return 0;
 }
