@@ -1,4 +1,4 @@
-#include "GPIOPin.h"
+#include "GPIOManager.h"
 #include <iostream>
 
 ///\file main.cpp
@@ -13,17 +13,12 @@ int main(int argc, const char* argv[])
 	using namespace std;
 	using namespace PiGPIO;
 	
-	GPIOPin test(14);
-	test.setExportState(Exported);
+	GPIOManager manager = GPIOManager();
 	
-	test.setDirection(Output);
+	manager.registerPin(21, Output);
 	
-	cout<< "Pin 14 value: " << (test.getValue() == High ? "1" : "0") <<endl;
-	cout << "Setting value to 1 on pin 14..." <<endl;
-	test.setValue(High);
-	cout<< "Pin 14 value: " << (test.getValue() == High ? "1" : "0") <<endl;
+	manager.blinkPin(21, 3000);
 	
 	
-	test.setExportState(Unexported);
 	return 0;
 }
