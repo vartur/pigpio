@@ -1,2 +1,2 @@
 # pigpio
-C++ library to interact with Raspberry Pi's GPIO pin
+C++ library to communicate with Raspberry Pi's GPIO pins.
