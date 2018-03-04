@@ -64,11 +64,7 @@ namespace PiGPIO
 		private:
 		
 			std::map<unsigned int, GPIOPin> m_pins; ///< All registered pins.
-			
-			///\brief Thread method for blinkPin.
-			///\param argPtr A void* pointer containing the thread's arguments.
-			void* t_blinkPin(void* argPtr);
-	
+				
 	};
 }
 

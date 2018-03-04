@@ -1,6 +1,5 @@
 #include "GPIOManager.h"
 #include <chrono>
-#include <pthread.h>
 #include <iostream>
 
 using namespace PiGPIO;
@@ -118,7 +117,6 @@ void GPIOManager::blinkPin(const unsigned int pinId, const unsigned int time)
 	chrono::steady_clock timeCounter;  
 	auto start = timeCounter.now(); 
 
-	// Now, wait for the requested amount of time
 	double elapsedTime = 0;
 	while(elapsedTime < time)
 	{
@@ -127,37 +125,4 @@ void GPIOManager::blinkPin(const unsigned int pinId, const unsigned int time)
 	}
 	
 	pin.setValue(Low);
-}
-
-void* GPIOManager::t_blinkPin(void* argPtr)
-{
-	using namespace std;
-	
-	if(!argPtr)
-	{
-		return nullptr;
-	}
-	
-	unsigned int* intArgPtr = static_cast<unsigned int*>(argPtr);
-	if(!intArgPtr)
-	{
-		return nullptr;
-	}
-	
-	const unsigned int time = *intArgPtr;
-	
-	chrono::steady_clock timeCounter;  
-	auto start = timeCounter.now(); 
-
-
-	// Now, wait for the requested amount of time
-	double elapsedTime = 0;
-	while(elapsedTime < time)
-	{
-		auto now = timeCounter.now();
-		elapsedTime = chrono::duration_cast<chrono::milliseconds>(now - start).count();
-	}
-	
-		
-	return nullptr;
 }
