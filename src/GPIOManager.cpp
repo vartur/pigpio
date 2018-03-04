@@ -94,6 +94,18 @@ void GPIOManager::setPinValue(const unsigned int pinId, const PinValue& value)
 	pin.setValue(value);	
 }
 
+PinValue GPIOManager::getPinValue(const unsigned int pinId) const
+{
+	auto pinPosition = m_pins.find(pinId);
+	if(pinPosition == m_pins.end())
+	{
+		std::cerr << "Cannot get value on pin '" << pinId << "', this pin has not been registered!" << std::endl;
+		return Low;
+	}
+	
+	return pinPosition->second.getValue();
+}
+
 void GPIOManager::blinkPin(const unsigned int pinId, const unsigned int time)
 {
 	using namespace std;

@@ -54,12 +54,15 @@ namespace PiGPIO
 			///\param value The new value of the pin.
 			void setPinValue(const unsigned int pinId, const PinValue& value);
 			
+			///\brief Gets a pin's value.
+			///\param pinId The pin's ID.
+			///\return The pin's value.
+			PinValue getPinValue(const unsigned int pinId) const;
+			
 			///\brief Sets a pin to high for a given amount of time.
 			///\param pinId The pin's ID.
 			///\param time The amount of time during which the pin will stay high, in milliseconds.
 			void blinkPin(const unsigned int pinId, const unsigned int time);
-			
-			
 			
 		private:
 		
